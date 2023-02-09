@@ -115,6 +115,8 @@ export default {
          */
         async selectedPayToken(token, oldValue) {
             const balance = await getErc20TokenBalance(this.$wallet.account, token.address);
+            console.log('balance', balance)
+            console.log('token', token)
 
             this.bAccountBalance = toBigNumber(balance);
             this.accountBalance = bFromTokenValue(balance, token.decimals).toNumber();

@@ -20,17 +20,7 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
-                    http: 'https://artion-api-a.fantom.network/graphql',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://artion-api-b.fantom.network/graphql',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://artion-api-c.fantom.network/graphql',
+                    http: 'http://localhost:7373/graphql',
                     // for subscriptions
                     ws: '',
                 },
@@ -43,34 +33,9 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
-                    http: 'https://xapi-nodea.fantom.network/',
+                    http: 'https://xapi.fantom.network/',
                     // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://xapi-nodeb.fantom.network/',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://xapi-nodec.fantom.network/',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://xapi-noded.fantom.network/',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://xapi-nodee.fantom.network/',
-                    // for subscriptions
-                    ws: '',
-                },
-                {
-                    http: 'https://xapi-nodef.fantom.network/',
-                    // for subscriptions
-                    ws: '',
+                    ws: 'wss://rpc.ankr.com/fantom_testnet/ws/6b3e97781946201e68dd1c620e0fdf759ed42be9ebd97c6f892036f37ea2bf89',
                 },
             ],
             // index into providers array of default provider or 'random' - takes index randomly
@@ -103,14 +68,14 @@ let appConfig = {
     // use hash in address
     routerHashMode: false,
     // Opera chain id
-    chainId: '0xfa',
+    chainId: '0xfa2',
     // JSON-RPC endpointAdd
     // rpc: 'https://rpcapi.fantom.network/',
-    rpc: 'https://rpc.ftm.tools/',
+    rpc: 'https://rpc.ankr.com/fantom_testnet',
     // used in links pointing to fantom explorer
-    explorerUrl: 'https://ftmscan.com/',
+    explorerUrl: 'https://testnet.ftmscan.com/',
     // used in links pointing to validators
-    explorerUrl2: 'https://explorer.fantom.network/',
+    explorerUrl2: 'https://testnet.ftmscan.com/',
     // default options for production build
     build: {
         // output dir for production build

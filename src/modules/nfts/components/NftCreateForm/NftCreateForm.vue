@@ -245,6 +245,8 @@ export default {
 
             this.collection = this.collections.filter(col => col.value === val.collectionId)[0];
 
+            console.log(this.collection)
+
             const _metadata = {
                 name: val.name,
                 description: val.description,

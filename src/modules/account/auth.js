@@ -75,6 +75,9 @@ export async function setUser(account, logged) {
         user.logged = true;
         user.isModerator = await isLoggedUserModerator();
 
+        console.log("user.isModerator", user.isModerator)
+        console.log("appConfig.flags.moderatorFunctions", appConfig.flags.moderatorFunctions) 
+
         if (!appConfig.flags.moderatorFunctions) {
             user.isModerator = false;
         }
