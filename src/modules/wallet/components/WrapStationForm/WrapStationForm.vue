@@ -110,6 +110,8 @@ export default {
         async setTokens() {
             const wftmToken = await getPayTokenWithPrice(WFTMContract);
 
+            console.log(wftmToken)
+
             this.wftmToken = {
                 decimals: wftmToken.decimals,
                 price: wftmToken.origPrice,

@@ -23,7 +23,7 @@ const PAY_TOKEN_IMAGES = {
     dai: '/img/pay-tokens/DAI.png',
 };
 
-export const WFTMContract = '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83';
+export const WFTMContract = '0xf1277d1Ed8AD466beddF92ef448A132661956621'; // mainnet'0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83';
 
 let PT = [];
 
@@ -72,6 +72,7 @@ async function fetchPayTokens() {
         payTokens.push(payToken);
     });
 
+    console.log(payTokens);
     return payTokens;
 }
 
@@ -147,7 +148,7 @@ export function PAY_TOKENS() {
         },
     ];
 }
-*/
+
 
 /**
  * Returns list of pay tokens with updated prices. Updates price on the token with attribut `_update: true`.

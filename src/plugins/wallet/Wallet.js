@@ -263,9 +263,9 @@ export class Wallet {
         const nonce = await gqlQuery(
             {
                 query: gql`
-                    query AccountByAddress($address: Address!) {
+                    query Nonce($address: Address!) {
                         account(address: $address) {
-                            txCount
+                            nonce
                         }
                     }
                 `,
@@ -274,10 +274,8 @@ export class Wallet {
                 },
                 fetchPolicy: 'network-only',
             },
-            'account.txCount',
-            fantomApolloClient
+            'account.nonce'
         );
-
         return inHexFormat ? nonce : parseInt(nonce, 16);
     }
 
@@ -291,13 +289,14 @@ export class Wallet {
             {
                 query: gql`
                     query GasPrice {
-                        gasPrice
+                        gasPrice {
+                            price
+                        }
                     }
                 `,
                 fetchPolicy: 'network-only',
             },
-            'gasPrice',
-            fantomApolloClient
+            'gasPrice.price'
         );
 
         // gasPrice * 1.2
@@ -313,20 +312,21 @@ export class Wallet {
      * @param {string} data
      * @return {Promise<string>}
      */
-    async estimateGas({ from = undefined, to = undefined, value = undefined, data = undefined }, silent = false) {
+    async estimateGas({ from = undefined, to = undefined, value = undefined, data = undefined }) {
+
         const estimateGas = await gqlQuery(
             {
                 query: gql`
-                    query EstimateGas($from: Address, $to: Address, $value: BigInt, $data: String) {
-                        estimateGas(from: $from, to: $to, value: $value, data: $data)
+                    query EstimateGas($from: Address!, $to: Address!, $value: BigInt!, $data: String!) {
+                        estimateGas(from: $from, to: $to, value: $value, data: $data) {
+                            gas
+                        }
                     }
                 `,
                 variables: { from, to, value, data },
                 fetchPolicy: 'network-only',
             },
-            'estimateGas',
-            fantomApolloClient,
-            silent
+            'estimateGas.gas'
         );
 
         return estimateGas;

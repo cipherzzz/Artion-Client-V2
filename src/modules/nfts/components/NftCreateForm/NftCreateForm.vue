@@ -245,7 +245,7 @@ export default {
 
             this.collection = this.collections.filter(col => col.value === val.collectionId)[0];
 
-            console.log(this.collection)
+            console.log('val', val);
 
             const _metadata = {
                 name: val.name,
@@ -254,7 +254,7 @@ export default {
                     symbol: val.symbol,
                     royalty: Number(val.royalty) ? val.royalty : null,
                     IP_Rights: val.linkToIp,
-                    collection: this.collection.label,
+                    collection: val.name,
                 },
             };
 

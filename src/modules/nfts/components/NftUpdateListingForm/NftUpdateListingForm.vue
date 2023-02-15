@@ -91,6 +91,7 @@ export default {
     methods: {
         async init() {
             this.payTokens = await PAY_TOKENS_WITH_PRICES();
+            console.log(this.payTokens)
         },
 
         /**
@@ -113,6 +114,7 @@ export default {
         },
 
         setValues(listing, selectedPayToken) {
+            console.log(listing, selectedPayToken);
             if ('decimals' in selectedPayToken) {
                 this.values.price = bFromTokenValue(listing.unitPrice, selectedPayToken.decimals).toNumber();
             }
