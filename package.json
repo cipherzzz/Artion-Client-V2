@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "engines": {
         "node": "16.19.0",
-        "npm": "8.19.3"
+        "yarn": "1.22.19"
     },
     "scripts": {
         "serve": "vue-cli-service serve --mode development",
