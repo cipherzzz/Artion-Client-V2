@@ -6,7 +6,7 @@
         "yarn": "1.22.19"
     },
     "scripts": {
-        "start": "vue-cli-service serve --mode production",
+        "start": "npx serve -s dist",
         "serve": "vue-cli-service serve --mode development",
         "serve.pg": "VUE_APP_FANTOM_MODULE=pg vue-cli-service serve --mode development",
         "serve.production": "vue-cli-service serve --mode production",
@@ -42,6 +42,7 @@
         "nanoid": "^3.1.25",
         "portal-vue": "^2.1.7",
         "register-service-worker": "^1.7.2",
+        "serve": "^14.2.0",
         "vue": "^2.6.14",
         "vue-apexcharts": "^1.6.2",
         "vue-apollo": "^3.0.7",
