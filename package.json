@@ -1,6 +1,10 @@
 {
     "name": "artion-client-v2",
     "version": "0.0.1",
+    "engines": {
+        "node": "16.19.0",
+        "npm": "8.19.3"
+    },
     "scripts": {
         "serve": "vue-cli-service serve --mode development",
         "serve.pg": "VUE_APP_FANTOM_MODULE=pg vue-cli-service serve --mode development",
