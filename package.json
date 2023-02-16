@@ -6,6 +6,7 @@
         "yarn": "1.22.19"
     },
     "scripts": {
+        "start": "vue-cli-service serve --mode production",
         "serve": "vue-cli-service serve --mode development",
         "serve.pg": "VUE_APP_FANTOM_MODULE=pg vue-cli-service serve --mode development",
         "serve.production": "vue-cli-service serve --mode production",
