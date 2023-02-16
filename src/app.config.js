@@ -20,7 +20,7 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
-                    http: 'http://localhost:7373/graphql',
+                    http: 'https://artion-api-graphql.herokuapp.com/graphql',
                     // for subscriptions
                     ws: '',
                 },
