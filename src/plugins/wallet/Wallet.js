@@ -18,7 +18,6 @@ import { Coinbase } from '@/plugins/wallet/coinbase/Coinbase.js';
 import { WalletConnect } from '@/plugins/wallet/walletconnect/WalletConnect.js';
 import { clone, defer } from 'fantom-vue-components/src/utils';
 import { notifications } from 'fantom-vue-components/src/plugins/notifications.js';
-import { fantomApolloClient } from '@/plugins/apollo/apollo-provider.js';
 import { delay } from 'fantom-vue-components/src/utils/function.js';
 import { toBigNumber, toHex } from '@/utils/big-number.js';
 import { compareAddresses } from '@/utils/address.js';
@@ -357,19 +356,18 @@ export class Wallet {
      * @private
      */
     async _verifyTransaction(txHash) {
-        let status = null;
-        let ok = false;
+        let pending = true;
 
         if (txHash) {
-            while (status === null) {
-                status = await this._getTransactionStatus(txHash);
+            while (pending === true) {
+                pending = await this._getTransactionStatus(txHash);
                 await delay(400);
             }
 
-            ok = parseInt(status, 16) === 1;
+            return true;
         }
 
-        return ok;
+        return false;
     }
 
     /**
@@ -381,10 +379,8 @@ export class Wallet {
         return gqlQuery(
             {
                 query: gql`
-                    query TransactionByHash($hash: Bytes32!) {
-                        transaction(hash: $hash) {
-                            status
-                        }
+                    query TransactionByHash($hash: String!) {
+                        transactionPending(hash: $hash)
                     }
                 `,
                 variables: {
@@ -392,8 +388,7 @@ export class Wallet {
                 },
                 fetchPolicy: 'network-only',
             },
-            'transaction.status',
-            fantomApolloClient
+            'transactionPending'
         );
     }
 

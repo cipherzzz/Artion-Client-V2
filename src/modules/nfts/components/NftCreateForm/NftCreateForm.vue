@@ -175,7 +175,7 @@ export default {
     },
 
     async created() {
-        let mintableBy = this.$wallet.account || '0x0000000000000000000000000000000000000000';
+        let mintableBy = '0x851c04b2c8CC4b3af6c886EA7cc4D326ffAEFe5A'//this.$wallet.account || '0x0000000000000000000000000000000000000000';
         console.log('loading collections mintable by', mintableBy);
         const collections = await getCollections({ first: 5000 }, null, mintableBy);
         this.collections = collections.edges.map(edge => {

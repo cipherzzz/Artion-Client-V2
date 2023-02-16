@@ -1193,6 +1193,8 @@ function decodeMintedNftTokenId(receipt, web3Client) {
         }
     ];
 
+    console.log(receipt.logs)
+
     const log = receipt.logs.find(log => log.topics.includes(mintedTopic));
     if (!log) throw "Minted topic not present in the transaction log";
     const decoded = web3Client.eth.abi.decodeLog(abiInputs, log.data, log.topics.slice(1));
