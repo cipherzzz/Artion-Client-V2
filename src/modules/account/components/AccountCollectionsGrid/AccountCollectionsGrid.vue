@@ -199,7 +199,6 @@ export default {
                 },
                 {
                     name: 'actions',
-                    label: this.$t('accountcollectionsgrid.actions'),
                 },
             ],
             searchText: '',
