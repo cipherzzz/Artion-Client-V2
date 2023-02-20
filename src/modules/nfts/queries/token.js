@@ -37,6 +37,8 @@ export async function getToken(contract = '', id = '') {
                     image
                     imageThumb
                     imageMimetype
+                    external
+                    animation
                     created
                     royalty
                     feeRecipient

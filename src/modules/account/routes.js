@@ -1,7 +1,7 @@
 import { i18n } from '@/plugins/vue-i18n.js';
 
 import Account from '@/modules/account/views/Account/Account.vue';
-// import AccountSingleItems from '@/modules/account/views/AccountSingleItems/AccountSingleItems.vue';
+import AccountSingleItems from '@/modules/account/views/AccountSingleItems/AccountSingleItems.vue';
 import AccountCreated from '@/modules/account/views/AccountCreated/AccountCreated.vue';
 import AccountFavorited from '@/modules/account/views/AccountFavorited/AccountFavorited.vue';
 import AccountActivity from '@/modules/account/views/AccountActivity/AccountActivity.vue';
@@ -14,7 +14,6 @@ import NotificationSettings from '@/modules/account/views/NotificationSettings/N
 import AppearanceSettings from '@/modules/account/views/AppearanceSettings/AppearanceSettings.vue';
 import AccountBannedTokens from '@/modules/account/views/AccountBannedTokens/AccountBannedTokens.vue';
 import AccountCollections from '@/modules/account/views/AccountCollections/AccountCollections.vue';
-import ThreeD from '@/modules/account/views/3d/ThreeD.vue';
 
 
 export function getAccountRoutes() {
@@ -28,7 +27,7 @@ export function getAccountRoutes() {
                 {
                     path: '/account/:address?/singleitems',
                     name: 'account-single-items',
-                    component: ThreeD,
+                    component: AccountSingleItems,
                     meta: {
                         title: i18n.t('page.accountSingleItems.title'),
                     },

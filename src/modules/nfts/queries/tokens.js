@@ -37,6 +37,8 @@ export async function getTokens(pagination = {}, filterSort = {}) {
                             description
                             image
                             imageThumb
+                            external
+                            animation
                             likes
                             isLiked
                             hasBids

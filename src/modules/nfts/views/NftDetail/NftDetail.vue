@@ -2,7 +2,13 @@
     <div class="nftdetail container">
         <div class="nftdetail_main">
             <div class="nftdetail_media">
-                <div v-if="token.imageMimetype && token.imageMimetype.startsWith('video/')" class="nftdetail_video">
+                <div v-if="token.animation" class="nftdetail_video">
+                    <a-model :src="token.animation" />
+                </div>
+                <div
+                    v-else-if="token.imageMimetype && token.imageMimetype.startsWith('video/')"
+                    class="nftdetail_video"
+                >
                     <a-video :src="token.image" :poster="getImageThumbUrl(token.imageThumb)" loop />
                 </div>
                 <div v-else class="nftdetail_img">
@@ -222,6 +228,7 @@ import { isExpired } from '@/utils/date.js';
 import NftDetailCollection from '@/modules/nfts/components/NftDetailCollection/NftDetailCollection.vue';
 import { compareAddresses } from '@/utils/address.js';
 import AVideo from '@/common/components/AVideo/AVideo';
+import AModel from '@/common/components/AModel/AModel';
 import NftPriceHistory from '@/modules/nfts/components/NftPriceHistory/NftPriceHistory.vue';
 import NftUpdateAuctionButton from '@/modules/nfts/components/NftUpdateAuctionButton/NftUpdateAuctionButton.vue';
 
@@ -263,6 +270,7 @@ export default {
         NftLike,
         NftTransferButton,
         FEllipsis,
+        AModel,
     },
 
     data() {
