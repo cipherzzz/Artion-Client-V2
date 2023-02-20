@@ -1,12 +1,12 @@
 let appConfig = {
     // app name - used in titles
-    name: 'Artion',
+    name: 'Siren',
     // app main title
-    title: 'Artion, NFT marketplace',
+    title: 'Siren, NFT marketplace',
     // app description
-    description: 'Artion, NFT marketplace',
+    description: 'Siren, NFT marketplace',
     // app keywords
-    keywords: 'Artion, NFT, NFTs, Fantom',
+    keywords: 'Siren, NFT, NFTs, Fantom',
     // app's favicon
     favicon: 'public/favicon.png',
     // app code

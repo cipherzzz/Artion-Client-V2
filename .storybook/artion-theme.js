@@ -33,7 +33,7 @@ export default create({
     inputBorderRadius: 4,
 */
 
-    brandTitle: 'Artion',
+    brandTitle: 'Siren',
     brandUrl: 'https://fantom.foundation/',
     // brandImage: 'https://placehold.it/350x150',
 });
