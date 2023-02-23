@@ -2,11 +2,20 @@
     <div class="nftdetail container">
         <div class="nftdetail_main">
             <div class="nftdetail_media">
-                <div v-if="token.animation && token.animation.split('.').includes('m4v')" class="nftdetail_video">
-                    <a-video :src="token.animation" :poster="token.image" loop autoplay />
-                </div>
-                <div v-else-if="token.animation" class="nftdetail_video">
+                <div v-if="token.animation" class="nftdetail_video">
                     <a-model :src="token.animation" />
+                </div>
+                <div
+                    v-else-if="token.imageMimetype && token.imageMimetype.startsWith('video/')"
+                    class="nftdetail_video"
+                >
+                    <a-video :src="token.image" :poster="getImageThumbUrl(token.imageThumb)" loop />
+                </div>
+                <div
+                    v-else-if="token.imageMimetype && token.imageMimetype.startsWith('audio/')"
+                    class="nftdetail_video"
+                >
+                    <a-video :src="token.image" :poster="getImageThumbUrl(token.imageThumb)" loop />
                 </div>
                 <div v-else class="nftdetail_img">
                     <f-image :src="token.image" :alt="token.name" :lazy-loading="false" />
