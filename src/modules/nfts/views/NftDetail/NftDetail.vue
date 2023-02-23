@@ -2,7 +2,10 @@
     <div class="nftdetail container">
         <div class="nftdetail_main">
             <div class="nftdetail_media">
-                <div v-if="token.animation" class="nftdetail_video">
+                <div v-if="token.animation && token.animation.split('.').includes('mp3')" class="nftdetail_video">
+                    <a-video :src="token.animation" :poster="getImageThumbUrl(token.imageThumb)" loop />
+                </div>
+                <div v-else-if="token.animation && token.animation.split('.').includes('glb')" class="nftdetail_video">
                     <a-model :src="token.animation" />
                 </div>
                 <div
@@ -314,7 +317,7 @@ export default {
         tokenOwnerName() {
             const { tokenOwner } = this;
 
-            console.log(this.token)
+            console.log(this.token);
 
             return tokenOwner
                 ? compareAddresses(tokenOwner.address, this.walletAddress)
