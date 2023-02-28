@@ -49,7 +49,11 @@ export default {
                 };
             } else {
                 // TMP
-                this.nft = { title: 'World of Umans', collection: 'Ancestral Uman', img: 'img/tmp/umans.png' };
+                this.nft = {
+                    title: 'Vision',
+                    collection: 'Infinite Reality - NFT Collection',
+                    img: 'img/tmp/bighead.png',
+                };
             }
         },
     },
