@@ -20,6 +20,7 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
+                    // http: 'http://localhost:7373/graphql',
                     http: 'https://artion-api-graphql.herokuapp.com/graphql',
                     // for subscriptions
                     ws: '',
@@ -35,7 +36,8 @@ let appConfig = {
                 {
                     http: 'https://xapi.fantom.network/',
                     // for subscriptions
-                    ws: 'wss://rpc.ankr.com/fantom_testnet/ws/6b3e97781946201e68dd1c620e0fdf759ed42be9ebd97c6f892036f37ea2bf89',
+                    ws:
+                        'wss://rpc.ankr.com/fantom_testnet/ws/6b3e97781946201e68dd1c620e0fdf759ed42be9ebd97c6f892036f37ea2bf89',
                 },
             ],
             // index into providers array of default provider or 'random' - takes index randomly

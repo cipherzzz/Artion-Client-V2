@@ -1,5 +1,5 @@
-// import { getDefiTokens } from '@/modules/wallet/queries/defi-tokens.js';
-import { bFromTokenValue } from '@/utils/big-number.js';
+import { getDefiTokens } from '@/modules/wallet/queries/defi-tokens.js';
+import { bFromTokenValue, toInt, bToWei } from '@/utils/big-number.js';
 import { getPayTokens } from '@/modules/nfts/queries/pay-tokens.js';
 import { clone } from 'fantom-vue-components/src/utils';
 
@@ -51,9 +51,20 @@ function getTokenFractionDigits(token) {
  */
 async function fetchPayTokens() {
     const pt = await getPayTokens();
+    const defiTokens = await getDefiTokens();
     const payTokens = [];
 
     pt.forEach(t => {
+        if (['dai', 'usdc'].includes(t.symbol.toLowerCase())) {
+            t.price = bFromTokenValue(bToWei(1), 18).toNumber();
+        } else if (t.symbol.toLowerCase() == 'wftm') {
+            const dToken = defiTokens.find(token => token.symbol.toLowerCase() == t.symbol.toLowerCase());
+            if (dToken) {
+                t.price = bFromTokenValue(toInt(dToken.price), dToken.priceDecimals).toNumber();
+                console.log('t.price', t.price);
+            }
+        }
+
         const symbolLC = t.symbol.toLowerCase();
         const payToken = {
             address: t.contract,
@@ -61,7 +72,7 @@ async function fetchPayTokens() {
             label: t.symbol === 'WFTM' ? 'wFTM' : t.symbol,
             img: PAY_TOKEN_IMAGES[symbolLC] || '',
             decimals: t.decimals,
-            price: bFromTokenValue(t.price, 6).toNumber(),
+            price: t.price,
             priceDecimals: 6,
             origPrice: t.price,
             value: symbolLC,
@@ -72,7 +83,6 @@ async function fetchPayTokens() {
         payTokens.push(payToken);
     });
 
-    console.log(payTokens);
     return payTokens;
 }
 
@@ -97,8 +107,6 @@ export async function PAY_TOKENS() {
 export async function PAY_TOKENS_WITH_PRICES() {
     return fetchPayTokens();
 }
-
-setPT();
 
 /**
  * @return {PayToken[]}
