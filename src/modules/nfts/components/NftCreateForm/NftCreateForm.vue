@@ -159,7 +159,7 @@ export default {
     data() {
         return {
             values: {
-                collectionId: '0xac7a698a85102f7b1dc7345e7f17ebca74e5a9e7', // Default Artion Collection
+                collectionId: '0x6463813489118ebfbef32d9603c67ea266a3a4c0', // Default Headshots Collection
             },
             collections: [],
             collection: {},
@@ -175,7 +175,7 @@ export default {
     },
 
     async created() {
-        let mintableBy = '0x851c04b2c8CC4b3af6c886EA7cc4D326ffAEFe5A'//this.$wallet.account || '0x0000000000000000000000000000000000000000';
+        let mintableBy = this.$wallet.account || '0x0000000000000000000000000000000000000000';
         console.log('loading collections mintable by', mintableBy);
         const collections = await getCollections({ first: 5000 }, null, mintableBy);
         this.collections = collections.edges.map(edge => {

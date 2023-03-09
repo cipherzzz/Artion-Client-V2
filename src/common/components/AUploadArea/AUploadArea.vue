@@ -18,7 +18,18 @@
                 style="display: none;"
                 @change="updatePreview"
             />
-            <img v-if="imagePreview" :src="imagePreview" alt="Preview Image" class="auploadarea_preview" />
+            <video
+                v-if="imagePreview && fileType.split('/')[0] == 'video'"
+                :src="imagePreview"
+                alt="Preview Image"
+                class="auploadarea_preview"
+            />
+            <img
+                v-if="imagePreview && fileType.split('/')[0] == 'image'"
+                :src="imagePreview"
+                alt="Preview Image"
+                class="auploadarea_preview"
+            />
             <div v-if="imagePreview" class="auploadarea_overlay">
                 <button
                     aria-label="Remove image"
@@ -45,7 +56,7 @@ export default {
     props: {
         accept: {
             type: String,
-            default: 'image/*',
+            default: 'image/*, video/*',
         },
         /** Maximum file size in bytes */
         maxFileSize: {
@@ -106,6 +117,8 @@ export default {
             const valid = this.validate(file);
 
             if (valid) {
+                this.fileType = file.type;
+                console.log(this.fileType);
                 this.imagePreview = URL.createObjectURL(file);
             }
 
