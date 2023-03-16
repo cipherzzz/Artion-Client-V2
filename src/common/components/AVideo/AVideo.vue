@@ -49,6 +49,8 @@ export default {
     },
 
     data() {
+        console.log('poster', this.poster);
+
         return {
             playing: this.autoplay,
             overlayInvisible: false,

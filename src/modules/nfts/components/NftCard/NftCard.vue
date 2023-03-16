@@ -85,7 +85,13 @@
             </div>
             <div class="nftcard_image">
                 <div class="nftcard_box">
-                    <f-image size="100%" :src="getImageThumbUrl(nftData.imageThumb)" :alt="nftData.name" />
+                    <f-image
+                        v-if="token.imageMimetype.startsWith('audio/')"
+                        size="100%"
+                        src="music-placeholder.jpg"
+                        :alt="nftData.name"
+                    />
+                    <f-image v-else size="100%" :src="getImageThumbUrl(nftData.imageThumb)" :alt="nftData.name" />
                 </div>
             </div>
             <div class="nftcard_header">
@@ -104,6 +110,7 @@ import ATokenValue from '@/common/components/ATokenValue/ATokenValue.vue';
 import dayjs from 'dayjs';
 import { banToken, unbanToken } from '@/modules/nfts/mutations/ban.js';
 import NftLike from '@/modules/nfts/components/NftLike/NftLike';
+import { getToken } from '@/modules/nfts/queries/token.js';
 
 export default {
     name: 'NftCard',
@@ -117,9 +124,12 @@ export default {
     },
 
     data() {
+        console.log('nftData', this.nftData);
+
         return {
             showBanButton: this.$wallet.user ? this.$wallet.user.isModerator : false,
             dBanned: this.nftData._banned || false,
+            token: {},
         };
     },
 
@@ -129,6 +139,10 @@ export default {
 
             return auction ? dayjs(auction.endTime).fromNow(true) : '';
         },
+    },
+
+    created() {
+        this.update();
     },
 
     methods: {
@@ -153,6 +167,11 @@ export default {
                     text: this.$t('nftUnbanned'),
                 });
             }
+        },
+
+        async update() {
+            this.token = await getToken(this.nftData.contract, this.nftData.tokenId);
+            console.log('this.token', this.token);
         },
 
         getImageThumbUrl,

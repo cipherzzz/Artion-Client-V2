@@ -24,6 +24,13 @@
                 alt="Preview Image"
                 class="auploadarea_preview"
             />
+            <video
+                v-if="imagePreview && fileType.split('/')[0] == 'audio'"
+                :src="imagePreview"
+                alt="Preview Image"
+                poster="music-placeholder.jpg"
+                class="auploadarea_preview"
+            />
             <img
                 v-if="imagePreview && fileType.split('/')[0] == 'image'"
                 :src="imagePreview"
@@ -48,6 +55,7 @@
 </template>
 <script>
 import AppIconset from '@/modules/app/components/AppIconset/AppIconset';
+
 export default {
     name: 'AUploadArea',
 
@@ -125,6 +133,8 @@ export default {
             if (!this.strict || valid) {
                 this.$emit('input', files);
             }
+
+            console.log(this.imagePreview, this.fileType);
         },
 
         /**
