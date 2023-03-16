@@ -56,7 +56,7 @@ export default {
     props: {
         accept: {
             type: String,
-            default: 'image/*, video/*',
+            default: 'image/*, video/*, audio/*, *',
         },
         /** Maximum file size in bytes */
         maxFileSize: {
