@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 export function imageValidator(file) {
-    console.log('file.type', file.name);
+    console.log('file.type', file.type);
     return (
         file &&
         (file.type.indexOf('image/') > -1 ||

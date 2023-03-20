@@ -2,11 +2,8 @@
     <div class="nftdetail container">
         <div class="nftdetail_main">
             <div class="nftdetail_media">
-                <!-- <div v-if="token.animation && token.animation.split('.').includes('mp3')" class="nftdetail_video">
-                    <a-video :src="token.animation" :poster="getImageThumbUrl(token.imageThumb)" loop />
-                </div> -->
-                <div v-if="token.animation && token.animation.split('.').includes('glb')" class="nftdetail_video">
-                    <a-model :src="token.animation" />
+                <div v-if="!token.imageMimetype" class="nftdetail_video">
+                    <a-model :src="token.image" />
                 </div>
                 <div
                     v-else-if="token.imageMimetype && token.imageMimetype.startsWith('video/')"

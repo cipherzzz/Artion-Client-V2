@@ -25,14 +25,15 @@
                 class="auploadarea_preview"
             />
             <video
-                v-if="imagePreview && fileType.split('/')[0] == 'audio'"
+                v-else-if="imagePreview && fileType.split('/')[0] == 'audio'"
                 :src="imagePreview"
                 alt="Preview Image"
                 poster="music-placeholder.jpg"
                 class="auploadarea_preview"
             />
+            <a-model v-else-if="imagePreview && fileType == ''" :src="imagePreview" alt="Preview Model" />
             <img
-                v-if="imagePreview && fileType.split('/')[0] == 'image'"
+                v-else-if="imagePreview && fileType.split('/')[0] == 'image'"
                 :src="imagePreview"
                 alt="Preview Image"
                 class="auploadarea_preview"
@@ -55,11 +56,12 @@
 </template>
 <script>
 import AppIconset from '@/modules/app/components/AppIconset/AppIconset';
+import AModel from '@/common/components/AModel/AModel';
 
 export default {
     name: 'AUploadArea',
 
-    components: { AppIconset },
+    components: { AppIconset, AModel },
 
     props: {
         accept: {
@@ -115,9 +117,7 @@ export default {
 
             let files;
             e.type === 'drop' ? (files = e.dataTransfer.files) : (files = e.target.files);
-            // console.log(files);
             if (files.length === 0) {
-                // console.log('empty');
                 return;
             }
 
@@ -126,7 +126,6 @@ export default {
 
             if (valid) {
                 this.fileType = file.type;
-                console.log(this.fileType);
                 this.imagePreview = URL.createObjectURL(file);
             }
 

@@ -69,24 +69,12 @@
                         </div>
                     </div>
                 </div>
-                <!--                <div class="nftcard_bottom">
-                    <div class="nftcard_time">
-                        <div class="nftcard_label">Time left</div>
-                        <div class="nftcard_term">{{ nftData.timeLeft }}</div>
-                    </div>
-                    <div class="nftcard_lastPrice">
-                        <div class="nftcard_label">Last Price</div>
-                        <div class="nftcard_crypto">
-                            <f-image :src="nftData.lastPrice.cryptoLogo" :alt="nftData.lastPrice.cryptoName" />
-                            {{ nftData.lastPrice.crypto }}
-                        </div>
-                    </div>
-                </div>-->
             </div>
             <div class="nftcard_image">
                 <div class="nftcard_box">
+                    <f-image v-if="!token.imageMimetype" size="100%" src="3d-placeholder.jpg" :alt="nftData.name" />
                     <f-image
-                        v-if="token.imageMimetype.startsWith('audio/')"
+                        v-else-if="token.imageMimetype && token.imageMimetype.startsWith('audio/')"
                         size="100%"
                         src="music-placeholder.jpg"
                         :alt="nftData.name"
