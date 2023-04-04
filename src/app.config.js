@@ -20,8 +20,8 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
-                    //http: 'http://localhost:7373/graphql',
-                    http: 'https://siren-graphql.herokuapp.com/graphql',
+                    http: 'http://localhost:7373/graphql',
+                    //http: 'https://siren-graphql.herokuapp.com/graphql',
                     // for subscriptions
                     ws: '',
                 },
@@ -34,10 +34,9 @@ let appConfig = {
             // list of providers. if one of them is unavailable, another is randomly picked
             providers: [
                 {
-                    http: 'https://xapi.fantom.network/',
+                    http: 'https://polygon-mumbai.g.alchemy.com/v2/A6KMG11K3g9fYhFF8GIwiD0KBeT4l4mM/',
                     // for subscriptions
-                    ws:
-                        'wss://rpc.ankr.com/fantom_testnet/ws/6b3e97781946201e68dd1c620e0fdf759ed42be9ebd97c6f892036f37ea2bf89',
+                    ws: 'wss://polygon-mumbai.g.alchemy.com/v2/A6KMG11K3g9fYhFF8GIwiD0KBeT4l4mM/',
                 },
             ],
             // index into providers array of default provider or 'random' - takes index randomly
@@ -45,7 +44,7 @@ let appConfig = {
         },
     },
     // app settings
-    settings: {
+    settings: { 
         languages: [
             { label: 'English', value: 'en' },
             // { label: 'русский', value: 'ru' },
@@ -70,14 +69,15 @@ let appConfig = {
     // use hash in address
     routerHashMode: false,
     // Opera chain id
-    chainId: '0xfa2',
+    chainId: '0x13881',
     // JSON-RPC endpointAdd
     // rpc: 'https://rpcapi.fantom.network/',
-    rpc: 'https://rpc.ankr.com/fantom_testnet',
+    //rpc: 'https://rpc.ankr.com/fantom_testnet',
+    rpc: 'https://polygon-mumbai.g.alchemy.com/v2/A6KMG11K3g9fYhFF8GIwiD0KBeT4l4mM/',
     // used in links pointing to fantom explorer
-    explorerUrl: 'https://testnet.ftmscan.com/',
+    explorerUrl: 'https://mumbai.polygonscan.com/',
     // used in links pointing to validators
-    explorerUrl2: 'https://testnet.ftmscan.com/',
+    explorerUrl2: 'https://mumbai.polygonscan.com/',
     // default options for production build
     build: {
         // output dir for production build
